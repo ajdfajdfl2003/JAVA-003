@@ -6,6 +6,7 @@
    - Answer: [task 02 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/Week-01/Week_01/task02#readme)
 
 3. （必做）画一张图，展示 Xmx、Xms、Xmn、Meta、DirectMemory、Xss 这些内存参数的关系。
+   - Answer: [task 03 solution](https://github.com/ajdfajdfl2003/JAVA-003/blob/Week-01/Week_01/task03/)
 
 4. （选做）检查一下自己维护的业务系统的 JVM 参数配置，用 jstat 和 jstack、jmap 查看一下详情，并且自己独立分析一下大概情况，思考有没有不合理的地方，如何改进。
     - **注意**： 如果没有线上系统，可以自己 run 一个 web/java 项目。
