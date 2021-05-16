@@ -2,6 +2,19 @@
 
 > （必做）写一段代码，使用 HttpClient 或 OkHttp 访问 http://localhost:8801 ，代码提交到 GitHub
 
+- open a terminal
+- ```bash
+  cd Week_02/task06
+  # run a http server with course example HttpServer01
+  mvn spring-boot:run
+  ```
+- open a another terminal
+- ```bash
+  cd Week_02/task06
+  # run two test for visit http://localhost:8801
+  mvn test
+  ```
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
