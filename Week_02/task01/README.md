@@ -120,3 +120,16 @@ GCLogAnalysis
       0.829: [GC (CMS Final Remark) [YG occupancy: 40753 K (314560 K)]0.829: [Rescan (parallel) , 0.0003699 secs]0.829: [weak refs processing, 0.0000396 secs]0.829: [class unloading, 0.0001741 secs]0.829: [scrub symbol table, 0.0002264 secs]0.830: [scrub string table, 0.0000806 secs][1 CMS-remark: 670031K(699072K)] 710784K(1013632K), 0.0010007 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
       ```
     - 會把業務邏輯的線程暫停
+
+## G1GC
+### Xmx1g, Xms1g
+```bash
+# run app with G1GC
+java -XX:+PrintGC \
+-Xmx1g -Xms1g \
+-Xloggc:g1.gc.xms1g.xmx1g.log \
+-XX:+UseG1GC \
+GCLogAnalysis
+```
+
+觀察 `g1.gc.xms1g.xmx1g.log` 的日誌
