@@ -97,6 +97,17 @@ GCLogAnalysis
 - 參考：[GC LOGGING – USER, SYS, REAL – WHICH TIME TO USE?](https://blog.gceasy.io/2016/04/06/gc-logging-user-sys-real-which-time-to-use/)
 
 ## CMS GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGCDetails \
+-Xmx4g -Xms4g \
+-Xloggc:cms.gc.xms4g.xmx4g.log \
+-XX:+UseConcMarkSweepGC \
+GCLogAnalysis
+```
+
+- 歷經七次的 Young GC，大約暫停了 0.04 ~ 0.08 秒之間
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with CMS GC
