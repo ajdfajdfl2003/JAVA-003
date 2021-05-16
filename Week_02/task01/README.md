@@ -155,6 +155,15 @@ GCLogAnalysis
     - 會把業務邏輯的線程暫停
 
 ## G1GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGC \
+-Xmx4g -Xms4g \
+-Xloggc:g1.gc.xms4g.xmx4g.log \
+-XX:+UseG1GC \
+GCLogAnalysis
+```
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with G1GC
@@ -164,5 +173,3 @@ java -XX:+PrintGC \
 -XX:+UseG1GC \
 GCLogAnalysis
 ```
-
-觀察 `g1.gc.xms1g.xmx1g.log` 的日誌
