@@ -13,6 +13,17 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.281-b09, mixed mode)
 ```
 
 ## 串行 GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGCDetails \
+-Xmx4g -Xms4g \
+-Xloggc:serial.gc.xms4g.xmx4g.log \
+-XX:+UseSerialGC \
+GCLogAnalysis
+```
+
+- 只做了兩次的 Young 區 GC，但相對的暫停時間增加到了 0.1 秒多
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with SerialGC(串行）
@@ -54,6 +65,17 @@ GCLogAnalysis
         - 此時整個 Heap 容量從 967MB 壓縮到了 379 MB
 
 ## 并行 GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGCDetails \
+-Xmx4g -Xms4g \
+-Xloggc:parallel.gc.xms4g.xmx4g.log \
+GCLogAnalysis
+```
+
+- 有三次的 Young 區 GC，這個階段的暫停時間大約 0.04 ~ 0.07 秒的時間
+    - 相較於在調大 Xmx, Xms 的情況下較快速
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with Parallel(並行）
@@ -75,6 +97,17 @@ GCLogAnalysis
 - 參考：[GC LOGGING – USER, SYS, REAL – WHICH TIME TO USE?](https://blog.gceasy.io/2016/04/06/gc-logging-user-sys-real-which-time-to-use/)
 
 ## CMS GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGCDetails \
+-Xmx4g -Xms4g \
+-Xloggc:cms.gc.xms4g.xmx4g.log \
+-XX:+UseConcMarkSweepGC \
+GCLogAnalysis
+```
+
+- 歷經七次的 Young GC，大約暫停了 0.04 ~ 0.08 秒之間
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with CMS GC
@@ -122,6 +155,15 @@ GCLogAnalysis
     - 會把業務邏輯的線程暫停
 
 ## G1GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGC \
+-Xmx4g -Xms4g \
+-Xloggc:g1.gc.xms4g.xmx4g.log \
+-XX:+UseG1GC \
+GCLogAnalysis
+```
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with G1GC
@@ -131,5 +173,3 @@ java -XX:+PrintGC \
 -XX:+UseG1GC \
 GCLogAnalysis
 ```
-
-觀察 `g1.gc.xms1g.xmx1g.log` 的日誌
