@@ -14,10 +14,13 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.281-b09, mixed mode)
 
 ## 串行 GC
 ### Xmx1g, Xms1g
-
 ```bash
 # run app with SerialGC(串行）
-java -XX:+PrintGCDetails -Xmx1g -Xms1g -Xloggc:serial.gc.xms1g.xmx1g.log -XX:+UseSerialGC GCLogAnalysis
+java -XX:+PrintGCDetails \
+-Xmx1g -Xms1g \
+-Xloggc:serial.gc.xms1g.xmx1g.log \
+-XX:+UseSerialGC \
+GCLogAnalysis
 ```
 
 觀察 `serial.gc.xms1g.xmx1g.log` 的日誌
@@ -52,11 +55,13 @@ java -XX:+PrintGCDetails -Xmx1g -Xms1g -Xloggc:serial.gc.xms1g.xmx1g.log -XX:+Us
 
 ## 并行 GC
 ### Xmx1g, Xms1g
-
 ```bash
 # run app with Parallel(並行）
 # 因為 Java 8 預設是使用 ParallelGC，所以這裡不特別指名使用
-java -XX:+PrintGCDetails -Xmx1g -Xms1g -Xloggc:parallel.gc.xms1g.xmx1g.log GCLogAnalysis
+java -XX:+PrintGCDetails \
+-Xmx1g -Xms1g \
+-Xloggc:parallel.gc.xms1g.xmx1g.log \
+GCLogAnalysis
 ```
 
 觀察 `parallel.gc.xms1g.xmx1g.log` 的日誌
@@ -68,3 +73,50 @@ java -XX:+PrintGCDetails -Xmx1g -Xms1g -Xloggc:parallel.gc.xms1g.xmx1g.log GCLog
     - 但有觀察到 user + sys 已經不等於 real 了
     - 原因是 ParallelGC 是使用多線程來做 GC，預設為系統核心數
 - 參考：[GC LOGGING – USER, SYS, REAL – WHICH TIME TO USE?](https://blog.gceasy.io/2016/04/06/gc-logging-user-sys-real-which-time-to-use/)
+
+## CMS GC
+### Xmx1g, Xms1g
+```bash
+# run app with CMS GC
+java -XX:+PrintGCDetails \
+-Xmx1g -Xms1g \
+-Xloggc:cms.gc.xms1g.xmx1g.log \
+-XX:+UseConcMarkSweepGC \
+GCLogAnalysis
+```
+
+觀察 `cms.gc.xms1g.xmx1g.log` 的日誌
+- 從啟動後到第 496 毫秒，總共做了五次 Young 區 GC
+    - ```log
+      0.224: [GC (Allocation Failure) 0.224: [ParNew: 279616K->34943K(314560K), 0.0309837 secs] 279616K->93401K(1013632K), 0.0310931 secs] [Times: user=0.07 sys=0.12, real=0.03 secs] 
+      0.293: [GC (Allocation Failure) 0.293: [ParNew: 314559K->34943K(314560K), 0.0282108 secs] 373017K->171563K(1013632K), 0.0283563 secs] [Times: user=0.06 sys=0.10, real=0.03 secs]
+      0.353: [GC (Allocation Failure) 0.353: [ParNew: 314559K->34944K(314560K), 0.0423477 secs] 451179K->243572K(1013632K), 0.0424395 secs] [Times: user=0.27 sys=0.03, real=0.05 secs]
+      0.425: [GC (Allocation Failure) 0.425: [ParNew: 314560K->34944K(314560K), 0.0453744 secs] 523188K->319574K(1013632K), 0.0454712 secs] [Times: user=0.26 sys=0.03, real=0.04 secs]
+      0.496: [GC (Allocation Failure) 0.496: [ParNew: 314560K->34944K(314560K), 0.0484191 secs] 599190K->401462K(1013632K), 0.0485666 secs] [Times: user=0.33 sys=0.02, real=0.05 secs]
+      ```
+    - 這五次的 GC 都壓縮到了 34MB
+- 到的第 545 毫秒，開始進入到了 CMS 初始化的階段
+    - ```log
+      0.545: [GC (CMS Initial Mark) [1 CMS-initial-mark: 366518K(699072K)] 407641K(1013632K), 0.0003757 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+      ```
+    - Old 區目前是 357 MB，而整個 Heap 容量是 398 MB
+    - 會把業務邏輯的線程暫停
+- 而在之後，就開始做 併發 Old 區的 GC
+    - ```log
+      0.546: [CMS-concurrent-mark-start]
+      0.548: [CMS-concurrent-mark: 0.003/0.003 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
+      0.549: [CMS-concurrent-preclean-start]
+      0.550: [CMS-concurrent-preclean: 0.001/0.001 secs] [Times: user=0.00 sys=0.00, real=0.00 secs]
+      0.550: [CMS-concurrent-abortable-preclean-start]
+      0.572: [GC (Allocation Failure) 0.572: [ParNew: 314560K->34942K(314560K), 0.0452038 secs] 681078K->476206K(1013632K), 0.0453316 secs] [Times: user=0.32 sys=0.02, real=0.05 secs]
+      0.644: [GC (Allocation Failure) 0.644: [ParNew: 314558K->34943K(314560K), 0.0445881 secs] 755822K->554030K(1013632K), 0.0446839 secs] [Times: user=0.32 sys=0.03, real=0.05 secs]
+      0.716: [GC (Allocation Failure) 0.716: [ParNew: 314559K->34942K(314560K), 0.0418943 secs] 833646K->627927K(1013632K), 0.0419896 secs] [Times: user=0.30 sys=0.03, real=0.04 secs]
+      0.786: [GC (Allocation Failure) 0.786: [ParNew: 314558K->34942K(314560K), 0.0426601 secs] 907543K->704973K(1013632K), 0.0428310 secs] [Times: user=0.30 sys=0.02, real=0.04 secs]
+      0.829: [CMS-concurrent-abortable-preclean: 0.009/0.279 secs] [Times: user=1.35 sys=0.10, real=0.28 secs]
+      ```
+    - 而在併發的過程中，還有發生四次的 Young GC
+- 在啟動後的第 922 毫秒，CMS 來到了最終標記階段
+    - ```log
+      0.829: [GC (CMS Final Remark) [YG occupancy: 40753 K (314560 K)]0.829: [Rescan (parallel) , 0.0003699 secs]0.829: [weak refs processing, 0.0000396 secs]0.829: [class unloading, 0.0001741 secs]0.829: [scrub symbol table, 0.0002264 secs]0.830: [scrub string table, 0.0000806 secs][1 CMS-remark: 670031K(699072K)] 710784K(1013632K), 0.0010007 secs] [Times: user=0.01 sys=0.00, real=0.00 secs]
+      ```
+    - 會把業務邏輯的線程暫停
