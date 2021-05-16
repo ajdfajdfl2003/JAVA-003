@@ -15,7 +15,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.281-b09, mixed mode)
 ## 串行 GC
 ### Xmx4g, Xms4g
 ```bash
-# run app with SerialGC(串行）
 java -XX:+PrintGCDetails \
 -Xmx4g -Xms4g \
 -Xloggc:serial.gc.xms4g.xmx4g.log \
@@ -66,6 +65,17 @@ GCLogAnalysis
         - 此時整個 Heap 容量從 967MB 壓縮到了 379 MB
 
 ## 并行 GC
+### Xmx4g, Xms4g
+```bash
+java -XX:+PrintGCDetails \
+-Xmx4g -Xms4g \
+-Xloggc:parallel.gc.xms4g.xmx4g.log \
+GCLogAnalysis
+```
+
+- 有三次的 Young 區 GC，這個階段的暫停時間大約 0.04 ~ 0.07 秒的時間
+    - 相較於在調大 Xmx, Xms 的情況下較快速
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with Parallel(並行）
