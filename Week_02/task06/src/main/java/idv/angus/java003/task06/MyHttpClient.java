@@ -1,5 +1,6 @@
 package idv.angus.java003.task06;
 
+import idv.angus.java003.task06.exception.MyHttpException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class MyHttpClient {
     public static CloseableHttpClient httpclient = HttpClients.createDefault();
 
-    public String get(String url) throws MyHttpClientException {
+    public String get(String url) throws MyHttpException {
         HttpGet httpGet = new HttpGet("http://localhost:8801");
         try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
             log.info("status line: " + response.getStatusLine());
@@ -22,13 +23,7 @@ public class MyHttpClient {
             return responseMessage;
         } catch (IOException e) {
             log.error("something went wrong when http get to " + url, e);
-            throw new MyHttpClientException("http get failed");
-        }
-    }
-
-    static class MyHttpClientException extends Exception {
-        public MyHttpClientException(String message) {
-            super(message);
+            throw new MyHttpException("http get failed");
         }
     }
 }
