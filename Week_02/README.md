@@ -12,10 +12,9 @@ Week02 作业题目：
 
 6.（必做）写一段代码，使用 HttpClient 或 OkHttp 访问  http://localhost:8801 ，代码提交到 GitHub
 
-以上作业，要求 2 道必做题目提交到自己 GitHub 上面，然后把自己的作业链接填写到下方的表单里面：
-https://jinshuju.net/f/nvvg20
-示例代码参考：
-https://github.com/JavaCourse00/JavaCourseCodes
+以上作业，要求 2 道必做题目提交到自己 GitHub 上面，然后把自己的作业链接填写到下方的表单里面： https://jinshuju.net/f/nvvg2j0
+
+示例代码参考： https://github.com/JavaCourse00/JavaCourseCodes
 
 作业提交规范：
 
