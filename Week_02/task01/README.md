@@ -13,6 +13,18 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.281-b09, mixed mode)
 ```
 
 ## 串行 GC
+### Xmx4g, Xms4g
+```bash
+# run app with SerialGC(串行）
+java -XX:+PrintGCDetails \
+-Xmx4g -Xms4g \
+-Xloggc:serial.gc.xms4g.xmx4g.log \
+-XX:+UseSerialGC \
+GCLogAnalysis
+```
+
+- 只做了兩次的 Young 區 GC，但相對的暫停時間增加到了 0.1 秒多
+
 ### Xmx1g, Xms1g
 ```bash
 # run app with SerialGC(串行）
