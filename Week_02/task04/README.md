@@ -19,7 +19,7 @@ G1GC
   - 若需要調整可以透過 `-XX:MaxGCPauseMilllis=[number]`
   - G1GC 會在多次 GC 後，調整策略頻率以及處理垃圾的數量，慢慢地控制在 200 ms 內
 
-就速度來看，大概會是
+就暫停時間長短來看，大概會是
 - Serial GC > Parallel GC ~= CMS GC > G1GC
 - 雖然 Parallel GC 跟 CMS GC 好像平分秋色
   - 但 Parallel GC 是使用所有 CPU Thread 來做，意思就是他會把業務邏輯暫停
