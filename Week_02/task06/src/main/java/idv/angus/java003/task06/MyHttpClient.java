@@ -15,7 +15,7 @@ public class MyHttpClient {
     public static CloseableHttpClient httpclient = HttpClients.createDefault();
 
     public String get(String url) throws MyHttpException {
-        HttpGet httpGet = new HttpGet("http://localhost:8801");
+        HttpGet httpGet = new HttpGet(url);
         try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
             log.info("status line: " + response.getStatusLine());
             String responseMessage = EntityUtils.toString(response.getEntity(), "UTF-8");
