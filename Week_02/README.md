@@ -1,5 +1,5 @@
-Week02 作业题目：
-
+# Week 02
+## 作業
 1.（选做）使用 GCLogAnalysis.java 自己演练一遍串行 / 并行 /CMS/G1 的案例。
   - Answer: [task 01 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_02/task01)
 
@@ -20,13 +20,12 @@ Week02 作业题目：
 
 示例代码参考： https://github.com/JavaCourse00/JavaCourseCodes
 
-作业提交规范：
-
-1. 作业不要打包 ；
-2. 同学们写在 md 文件里，而不要发 Word, Excel , PDF 等 ；
-3. 代码类作业需提交完整 Java 代码，不能是片段；
-4. 作业按课时分目录，仅上传作业相关，笔记分开记录；
-5. 画图类作业提交可直接打开的图片或 md，手画的图手机拍照上传后太大，难以查看，推荐画图（推荐 PPT、Keynote）；
+## 作业提交规范
+1. 作业不要打包。
+2. 同学们写在 md 文件里，而不要发 Word, Excel , PDF 等。
+3. 代码类作业需提交完整 Java 代码，不能是片段。
+4. 作业按课时分目录，仅上传作业相关，笔记分开记录。
+5. 画图类作业提交可直接打开的图片或 md，手画的图手机拍照上传后太大，难以查看，推荐画图（推荐 PPT、Keynote）。
 6. 提交记录最好要标明明确的含义（比如第几题作业）。 GitHub 使用教程： https://u.geekbang.org/lesson/51?article=294701
 
 学号查询方式：PC 端登录 time.geekbang.org, 点击右上角头像进入我的教室，左侧头像下方 G 开头的为学号
