@@ -6,12 +6,14 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
+import java.util.List;
+
 
 public class MyHttpInboundInitializer extends ChannelInitializer<SocketChannel> {
-    private final String backendUrl;
+    private final List<String> backends;
 
-    public MyHttpInboundInitializer(String backendUrl) {
-        this.backendUrl = backendUrl;
+    public MyHttpInboundInitializer(List<String> backends) {
+        this.backends = backends;
     }
 
     @Override
@@ -22,6 +24,6 @@ public class MyHttpInboundInitializer extends ChannelInitializer<SocketChannel> 
         pipeline.addLast(new HttpServerCodec());
         pipeline.addLast(new HttpObjectAggregator(1024 * 1024));
 
-        pipeline.addLast(new MyHttpInboundHandler(backendUrl));
+        pipeline.addLast(new MyHttpInboundHandler(backends));
     }
 }

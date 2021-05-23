@@ -7,12 +7,14 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @Log4j2
 public class MyHttpInboundHandler extends ChannelInboundHandlerAdapter {
     private final MyHttpOutboundHandler outBoundHandler;
 
-    public MyHttpInboundHandler(String backendUrl) {
-        this.outBoundHandler = new MyHttpOutboundHandler(backendUrl);
+    public MyHttpInboundHandler(List<String> backends) {
+        this.outBoundHandler = new MyHttpOutboundHandler(backends);
     }
 
     @Override

@@ -12,14 +12,16 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.List;
+
 @Log4j2
 public class MyHttpInboundServer {
     private final int port;
-    private final String backendUrl;
+    private final List<String> backends;
 
-    public MyHttpInboundServer(int port, String backendUrl) {
+    public MyHttpInboundServer(int port, List<String> backends) {
         this.port = port;
-        this.backendUrl = backendUrl;
+        this.backends = backends;
     }
 
     public void run() throws InterruptedException {
@@ -39,7 +41,7 @@ public class MyHttpInboundServer {
         bootstrap.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .handler(new LoggingHandler(LogLevel.INFO))
-                .childHandler(new MyHttpInboundInitializer(backendUrl));
+                .childHandler(new MyHttpInboundInitializer(backends));
 
         try {
             final Channel channel = bootstrap.bind(port).sync().channel();
