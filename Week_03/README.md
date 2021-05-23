@@ -28,8 +28,13 @@
 6. 提交记录最好要标明明确的含义（比如第几题作业）。 GitHub 使用教程： https://u.geekbang.org/lesson/51?article=294701
 
 以上作业，要求 2 道必做题目先提交到自己的 Github 上面，再把作业链接填写在下方表单： https://jinshuju.net/f/TAtJyI
+
 请务必按照示例格式进行提交，不要复制其他同学的格式，以免格式错误无法抓取作业。
+
 作业提交截止时间 5 月 23 日（周日）23:59 前。
+
 作业参考示例地址，由秦老师和助教共建，每周同步更新：  https://github.com/JavaCourse00/JavaCourseCodes
+
 Github 使用教程：  https://u.geekbang.org/lesson/51?article=294701
+
 学号查询方式：PC 端登录 time.geekbang.org, 点击右上角头像进入我的教室，左侧头像下方 G 开头的为学号
