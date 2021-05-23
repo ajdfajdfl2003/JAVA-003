@@ -1,5 +1,7 @@
 package idv.angus.client;
 
+import idv.angus.gateway.filter.HeaderHttpResponseFilter;
+import idv.angus.gateway.filter.HttpResponseFilter;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -22,8 +24,10 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 @Log4j2
 public class MyHttpClient {
     public final CloseableHttpAsyncClient httpclient;
+    private final HttpResponseFilter responseFilter;
 
     public MyHttpClient() {
+        responseFilter = new HeaderHttpResponseFilter();
         IOReactorConfig ioConfig = IOReactorConfig.custom()
                 .setConnectTimeout(1000)
                 .setSoTimeout(1000)
@@ -75,6 +79,7 @@ public class MyHttpClient {
                 response.headers().setInt("Content-Length", 0);
             }
             response.headers().set("Content-Type", "application/json");
+            responseFilter.filter(response);
         } catch (IOException e) {
             log.error("handle response failed", e);
             response = new DefaultFullHttpResponse(HTTP_1_1, NO_CONTENT);
