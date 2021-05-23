@@ -4,9 +4,9 @@
 
 ## 作業過程中遇到什麼問題&Fix
 ### MyHttpInboundInitializer
-在 MyHttpInboundInitializer 類中，沒有加上 `HttpServerCodec` 與 `HttpObjectAggregator`
-會拋出 `java.lang.ClassCastException: io.netty.buffer.PooledUnsafeDirectByteBuf cannot be cast to io.netty.handler.codec.http.FullHttpRequest`
-回頭看老師的代碼才發現少了這兩個
+在 MyHttpInboundInitializer 類中，沒有加上 `HttpServerCodec` 與 `HttpObjectAggregator` 的話，
+會拋出 `java.lang.ClassCastException: io.netty.buffer.PooledUnsafeDirectByteBuf cannot be cast to io.netty.handler.codec.http.FullHttpRequest`，
+回頭看老師的代碼才發現少了這兩個，至於為什麼還沒有細看...
 
 更多參考: 
 - https://blog.csdn.net/m0_45406092/article/details/104895032
