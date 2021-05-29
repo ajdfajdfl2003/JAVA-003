@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 一个简单的代码参考：
  */
-public class WaitAndNotify {
+public class WaitAndNotifyThreadSleep {
     private static int result;
 
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class WaitAndNotify {
                 e.printStackTrace();
             }
             System.out.println("Current thread: " + Thread.currentThread().getName());
-        }, "WaitAndNotify_calculator_1");
+        }, "WaitAndNotifyThreadSleep_calculator_1");
 
         final Thread student = new Thread(() -> {
             try {
@@ -34,15 +34,15 @@ public class WaitAndNotify {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }, "WaitAndNotify_student_1");
+        }, "WaitAndNotifyThreadSleep_student_1");
 
         // student.start() 因為需要等 notify，所以要先寫
         // 而 calculator.start() 需要 經過計算 後才會有結果
         // 也就是 student 先等，然後 calculator 算好結果 notify student 來拿
         student.start();
         calculator.start();
-        // 但在這個場景下套用 Wait and Notify 會變得很奇怪
-        // 若要不管 student.start 和 calculator.start() 誰先誰後的話，
+        // 但在這個場景下套用 Wait and Notify
+        // 且要不管 student.start 和 calculator.start() 誰先誰後的話，
         // 那麼 計算之前 一定要先等一下
         // 理由是我一定要確保 student 一定會收到 calculator 的 notify，
         // 若 student 還沒有開始 wait，而 calculator 先發出 notify 了，

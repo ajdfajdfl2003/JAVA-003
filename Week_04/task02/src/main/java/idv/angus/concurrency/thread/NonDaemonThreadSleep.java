@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 一个简单的代码参考：
  */
-public class NonDaemonThreadStop {
+public class NonDaemonThreadSleep {
     private static int result;
 
     public static void main(String[] args) throws InterruptedException {
@@ -21,7 +21,7 @@ public class NonDaemonThreadStop {
             result = sum();
             System.out.println("Current thread: " + Thread.currentThread().getName());
         });
-        mission.setName("NonDaemonThreadStop_1");
+        mission.setName("NonDaemonThreadSleep_1");
         // But this time we using non-daemon mode
         // Although daemon default value is false
         // This mean the main thread will wait sub-thread(mission: sum())
