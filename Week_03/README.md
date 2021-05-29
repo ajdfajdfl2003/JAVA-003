@@ -25,7 +25,9 @@
 3. 代码类作业需提交完整 Java 代码，不能是片段。
 4. 作业按课时分目录，仅上传作业相关，笔记分开记录。
 5. 画图类作业提交可直接打开的图片或 md，手画的图手机拍照上传后太大，难以查看，推荐画图（推荐 PPT、Keynote）。
-6. 提交记录最好要标明明确的含义（比如第几题作业）。 GitHub 使用教程： https://u.geekbang.org/lesson/51?article=294701
+6. 提交记录最好要标明明确的含义（比如第几题作业）。
+   
+GitHub 使用教程： https://u.geekbang.org/lesson/51?article=294701
 
 以上作业，要求 2 道必做题目先提交到自己的 Github 上面，再把作业链接填写在下方表单： https://jinshuju.net/f/TAtJyI
 
