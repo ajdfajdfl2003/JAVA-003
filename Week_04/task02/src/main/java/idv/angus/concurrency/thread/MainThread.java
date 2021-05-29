@@ -20,7 +20,7 @@ public class MainThread {
             result = sum();
             System.out.println("Current thread: " + Thread.currentThread().getName());
         });
-        mission.setName("fibonacci_thread_1");
+        mission.setName("MainThread_1");
         // And run this mission in Main Thread
         mission.run();
 

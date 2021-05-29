@@ -21,7 +21,7 @@ public class NonDaemonThreadStop {
             result = sum();
             System.out.println("Current thread: " + Thread.currentThread().getName());
         });
-        mission.setName("fibonacci_thread_1");
+        mission.setName("NonDaemonThreadStop_1");
         // But this time we using non-daemon mode
         // Although daemon default value is false
         // This mean the main thread will wait sub-thread(mission: sum())

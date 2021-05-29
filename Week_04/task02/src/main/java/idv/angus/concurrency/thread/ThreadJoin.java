@@ -20,7 +20,7 @@ public class ThreadJoin {
             result = sum();
             System.out.println("Current thread: " + Thread.currentThread().getName());
         });
-        mission.setName("fibonacci_thread_1");
+        mission.setName("ThreadJoin_1");
         mission.start();
 
         // This time we use join
