@@ -23,9 +23,10 @@ public class NonDaemonThreadStop {
         });
         mission.setName("fibonacci_thread_1");
         // But this time we using non-daemon mode
-        // Although daemon default set to false
+        // Although daemon default value is false
         // This mean the main thread will wait sub-thread(mission: sum())
         mission.setDaemon(false);
+        // Run this as new thread instead of main thread
         mission.start();
 
         // This is for wait for sub-thread(mission: sum())
@@ -33,6 +34,8 @@ public class NonDaemonThreadStop {
         TimeUnit.SECONDS.sleep(1);
         System.out.println("异步计算结果为：" + result);
         System.out.println("使用时间：" + Instant.now().minusMillis(start).toEpochMilli() + " ms");
+        // 缺點就是那個等待時間，會依照 sum 的邏輯操作時間而有所變動
+        // 也就是說 sum 的時間若現在來到了 1 秒，則睡覺時間秒數也需要調整到兩秒之類的
     }
 
     private static int sum() {
