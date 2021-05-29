@@ -5,15 +5,15 @@
 > 实现以后，代码提交到 GitHub。
 
 1.（必做）整合你上次作业的 httpclient/okhttp。
-    - Answer: [task 01 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_03/task01)
+  - Answer: [task 01 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_03/task01)
 
 2.（选做）使用 netty 实现后端 http 访问（代替上一步骤）。
 
 3.（必做）实现过滤器。
-    - Answer: [task 03 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_03/task03)
+  - Answer: [task 03 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_03/task03)
 
 4.（选做）实现路由。
-    - Answer: [task 04 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_03/task04)
+  - Answer: [task 04 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_03/task04)
 
 5.（选做）跑一跑课上的各个例子，加深对多线程的理解。
 
