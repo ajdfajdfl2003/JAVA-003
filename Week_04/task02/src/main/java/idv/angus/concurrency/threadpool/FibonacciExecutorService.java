@@ -32,7 +32,7 @@ public class FibonacciExecutorService {
 
         try {
             System.out.println("异步计算结果为：" + submit.get());
-            System.out.println("使用时间：" + (System.currentTimeMillis() - start) + " ms");
+            System.out.println("使用时间：" + Instant.now().minusMillis(start).toEpochMilli() + " ms");
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } finally {

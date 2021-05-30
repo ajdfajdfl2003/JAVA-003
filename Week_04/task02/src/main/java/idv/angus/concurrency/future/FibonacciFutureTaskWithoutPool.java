@@ -23,7 +23,7 @@ public class FibonacciFutureTaskWithoutPool {
         new Thread(worker, "FibonacciFutureTaskWithoutPool_1").start();
 
         System.out.println("异步计算结果为：" + worker.get());
-        System.out.println("使用时间：" + (System.currentTimeMillis() - start) + " ms");
+        System.out.println("使用时间：" + Instant.now().minusMillis(start).toEpochMilli() + " ms");
     }
 
 }
