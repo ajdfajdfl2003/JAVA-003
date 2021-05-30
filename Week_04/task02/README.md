@@ -18,4 +18,10 @@
 ## FutureTask with Thread Pool
 
 ## CompletableFuture
-### SupplyAsync then AcceptAsync
+For more information:
+- https://popcornylu.gitbooks.io/java_multithread/content/async/cfuture.html
+- https://openhome.cc/Gossip/CodeData/JDK8/CompleteableFuture.html 
+
+### Composable: SupplyAsync then AcceptAsync
+
+### Listenable: SupplyAsync when Complete
