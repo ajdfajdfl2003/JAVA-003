@@ -1,4 +1,4 @@
-package idv.angus.task02.xml;
+package idv.angus.task02.components;
 
 public interface User {
     void useKeyBoard();

@@ -1,5 +1,6 @@
 package idv.angus.task02.xml;
 
+import idv.angus.task02.components.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
