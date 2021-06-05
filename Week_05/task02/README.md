@@ -22,43 +22,45 @@
 物件跟介面都好了之後，開始設定 xml 吧！
 
 先幫 Damon 這個人拼裝一下
+
 ```xml
 <!-- 
     幫這個 bean 設定一個 id，待會執行的地方會需要拿到，
     並且這個 bean 對應的 Class 是 idv.angus.task02.xml.Damon
 -->
 <bean id="damon" class="idv.angus.task02.xml.Damon">
-    <!-- 從 xml 設定自身的屬性 -->
-    <property name="name" value="Damon"/>
-    <property name="keyboard">
-        <!-- 幫這個屬性設定 Keyboard 的實體內容 -->
-        <bean class="idv.angus.task02.xml.Keyboard">
-            <property name="keyCaps">
-                <!-- 幫這個 Keyboard 裝配兩個鍵帽 -->
-                <list>
-                    <bean class="idv.angus.task02.xml.keycaps.A"/>
-                    <bean class="idv.angus.task02.xml.keycaps.Enter"/>
-                </list>
-            </property>
-        </bean>
-    </property>
+  <!-- 從 xml 設定自身的屬性 -->
+  <property name="name" value="Damon"/>
+  <property name="keyboard">
+    <!-- 幫這個屬性設定 Keyboard 的實體內容 -->
+    <bean class="idv.angus.task02.xml.Keyboard">
+      <property name="keyCaps">
+        <!-- 幫這個 Keyboard 裝配兩個鍵帽 -->
+        <list>
+          <bean class="idv.angus.task02.components.keycaps.A"/>
+          <bean class="idv.angus.task02.components.keycaps.Enter"/>
+        </list>
+      </property>
+    </bean>
+  </property>
 </bean>
 ```
 
 再幫 Katherine 這個人拼裝一下
+
 ```xml
 <!-- 
     幫這個 bean 設定一個 id，下面設定 Katherine 的時候會用到，
     並且這個 bean 對應的 Class 是 idv.angus.task02.xml.Keyboard
 -->
 <bean id="katherineKeyboard" class="idv.angus.task02.xml.Keyboard">
-    <property name="keyCaps">
-        <!-- 幫這個 Keyboard 裝配兩個鍵帽 -->
-        <list>
-            <bean class="idv.angus.task02.xml.keycaps.B"/>
-            <bean class="idv.angus.task02.xml.keycaps.Enter"/>
-        </list>
-    </property>
+  <property name="keyCaps">
+    <!-- 幫這個 Keyboard 裝配兩個鍵帽 -->
+    <list>
+      <bean class="idv.angus.task02.components.keycaps.B"/>
+      <bean class="idv.angus.task02.components.keycaps.Enter"/>
+    </list>
+  </property>
 </bean>
 ```
 ```xml

@@ -10,8 +10,8 @@
             <bean class="idv.angus.task02.xml.Keyboard">
                 <property name="keyCaps">
                     <list>
-                        <bean class="idv.angus.task02.xml.keycaps.A"/>
-                        <bean class="idv.angus.task02.xml.keycaps.Enter"/>
+                        <bean class="idv.angus.task02.components.keycaps.A"/>
+                        <bean class="idv.angus.task02.components.keycaps.Enter"/>
                     </list>
                 </property>
             </bean>
@@ -22,8 +22,8 @@
     <bean id="katherineKeyboard" class="idv.angus.task02.xml.Keyboard">
         <property name="keyCaps">
             <list>
-                <bean class="idv.angus.task02.xml.keycaps.B"/>
-                <bean class="idv.angus.task02.xml.keycaps.Enter"/>
+                <bean class="idv.angus.task02.components.keycaps.B"/>
+                <bean class="idv.angus.task02.components.keycaps.Enter"/>
             </list>
         </property>
     </bean>

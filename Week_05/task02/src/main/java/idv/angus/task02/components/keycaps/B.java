@@ -1,4 +1,4 @@
-package idv.angus.task02.xml.keycaps;
+package idv.angus.task02.components.keycaps;
 
 import lombok.extern.log4j.Log4j2;
 
