@@ -162,3 +162,5 @@ public List<KeyCap> rightKeyCap() {
 
 - 像上述的例子，我需要 Autowired 兩個 List<KeyCap>，那主程式變數名字 `lefKeyCaps` 與設定檔內 `lefKeyCaps()` 一樣才會成功注入。
 - Resource 指定要找 `rightKeyCap`，設定檔案並沒有設定 bean name 是 `rightKeyCap`，那方法名是：`rightKeyCap()`，就會 match 到了。  
+
+Annotation 更多參考：http://tw.gitbook.net/spring/spring_java_based_configuration.html
