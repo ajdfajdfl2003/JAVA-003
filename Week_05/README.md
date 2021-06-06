@@ -53,7 +53,7 @@
 
 以上作业，要求 3 道必做题目提交到 GitHub 上面，然后把自己的作业链接填写到下方的表单里面：
 
-- https://jinshuju.net/f/KilZr6
+- https://jinshuju.net/f/pEPJzh
 
 作业提交截止时间 6 月 6 日 23:59 前。
 
