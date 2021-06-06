@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- README 有說明 -->
+    <bean id="damon" class="idv.angus.task02.xml.Damon">
+        <property name="name" value="Damon"/>
+        <property name="keyboard">
+            <bean class="idv.angus.task02.xml.Keyboard">
+                <property name="keyCaps">
+                    <list>
+                        <bean class="idv.angus.task02.components.keycaps.A"/>
+                        <bean class="idv.angus.task02.components.keycaps.Enter"/>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- README 有說明 -->
+    <bean id="katherineKeyboard" class="idv.angus.task02.xml.Keyboard">
+        <property name="keyCaps">
+            <list>
+                <bean class="idv.angus.task02.components.keycaps.B"/>
+                <bean class="idv.angus.task02.components.keycaps.Enter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="katherine" class="idv.angus.task02.xml.Katherine">
+        <property name="outfit" value="Street Style"/>
+        <property name="name" value="Katherine"/>
+        <property name="keyboard" ref="katherineKeyboard"/>
+    </bean>
+</beans>
