@@ -7,5 +7,10 @@
 >
 >- 3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。
  
+macOS install mysql: https://myapollo.com.tw/zh-tw/polly-install-mysql-using-homebrew/
 
+```bash
+brew services start mysql
+brew services stop mysql
+```
 
