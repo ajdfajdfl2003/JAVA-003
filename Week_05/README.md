@@ -4,6 +4,7 @@
 1.（选做）使 Java 里的动态代理，实现一个简单的 AOP。
 
 2.（必做）写代码实现 Spring Bean 的装配，方式越多越好（XML、Annotation 都可以）, 提交到 GitHub。
+  - Answer: [task 02 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_05/task02)
 
 3.（选做）实现一个 Spring XML 自定义配置，配置一组 Bean，例如：Student/Klass/School。
 
@@ -26,6 +27,7 @@
 7.（选做）总结 Hibernate 与 MyBatis 的各方面异同点。
 
 8.（必做）给前面课程提供的 Student/Klass/School 实现自动配置和 Starter。
+  - Answer: [task 08 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_05/task08)
 
 9.（选做）学习 MyBatis-generator 的用法和原理，学会自定义 TypeHandler 处理复杂类型。
 
@@ -36,6 +38,8 @@
   - 2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。
     
   - 3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。
+
+  - Answer: [task 10 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_05/task10)
 
 ### 附加题（可以后面上完数据库的课再考虑做）
 
@@ -49,7 +53,7 @@
 
 以上作业，要求 3 道必做题目提交到 GitHub 上面，然后把自己的作业链接填写到下方的表单里面：
 
-- https://jinshuju.net/f/KilZr6
+- https://jinshuju.net/f/pEPJzh
 
 作业提交截止时间 6 月 6 日 23:59 前。
 
