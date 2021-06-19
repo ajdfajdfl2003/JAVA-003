@@ -33,3 +33,12 @@
 01:32:47.486 [main] INFO  idv.angus.task02.InsertBatchPer1000
     - Time Elapsed for 1_000_000 record, Batch per 1000 record: 175805mills
 ```
+
+## Thread Pool
+### 每 200000 筆資料一個 Thread，然後每個 Thread 各自 Commit，跑完 100 萬筆資料
+```
+02:21:51.848 [main] INFO  idv.angus.task02.InsertWithThreadAs200000Batch
+    - Start 1_000_000 record. 200_000 record per Thread
+02:22:55.425 [main] INFO  idv.angus.task02.InsertWithThreadAs200000Batch
+    - Time Elapsed for 1_000_000 record. 200_000 record per Thread: 63573mills
+```
