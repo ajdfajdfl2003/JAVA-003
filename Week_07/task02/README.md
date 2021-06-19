@@ -42,3 +42,18 @@
 02:22:55.425 [main] INFO  idv.angus.task02.InsertWithThreadAs200000Batch
     - Time Elapsed for 1_000_000 record. 200_000 record per Thread: 63573mills
 ```
+
+### 用 Connection Pool 和 Thread 去跑 100 萬筆資料
+```
+02:44:08.103 [main] INFO  idv.angus.task02.InsertWithThreadAndPoolSize
+    - Start 1_000_000 record. 100000 record per Thread
+02:45:02.105 [main] INFO  idv.angus.task02.InsertWithThreadAndPoolSize
+    - Time Elapsed for 1_000_000 record. 100000 record per Thread: 53998mills
+```
+
+```
+02:36:50.934 [main] INFO  idv.angus.task02.InsertWithThreadAndPoolSize
+- Start 1_000_000 record. 50000 record per Thread with 20 PoolSize
+  02:37:42.044 [main] INFO  idv.angus.task02.InsertWithThreadAndPoolSize
+- Time Elapsed for 1_000_000 record. 50000 record per Thread with 20 PoolSize: 51106mills
+```

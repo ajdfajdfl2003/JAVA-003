@@ -12,6 +12,16 @@ class MyDataSource {
     private static final String password = "";
     private final HikariDataSource ds;
 
+    public MyDataSource(int poolSize) {
+        HikariConfig config = new HikariConfig();
+        config.setJdbcUrl(url);
+        config.setUsername(user);
+        config.setPassword(password);
+        config.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        config.setMaximumPoolSize(poolSize);
+        ds = new HikariDataSource(config);
+    }
+
     public MyDataSource() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(url);
