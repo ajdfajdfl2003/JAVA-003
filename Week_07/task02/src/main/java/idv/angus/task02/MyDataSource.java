@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 class MyDataSource {
-    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String url = "jdbc:mysql://localhost:33306/JAVA003";
     private static final String user = "root";
     private static final String password = "";
     private final HikariDataSource ds;
