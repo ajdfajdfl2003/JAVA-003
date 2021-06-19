@@ -16,6 +16,7 @@
     Start 1_000_000, one record one commit
 沒有跑結束我就先停掉了....，跑了將近二十分鐘...
 ```
+
 ### 每筆資料都進到 Batch，跑 100 萬筆才做 Batch 更新然後 Commit
 ```
 01:18:38.052 [main] INFO  idv.angus.task02.InsertAllBatch
@@ -23,4 +24,12 @@
 01:21:35.953 [main] INFO  idv.angus.task02.InsertAllBatch
     - Time Elapsed for 1_000_000 record, do insert as batch. 
       After 1_000_000 record, do commit: 177904mills
+```
+
+### 每 1000 筆資料就做 Batch，跑完 100 萬筆後 Commit
+```
+01:29:51.681 [main] INFO  idv.angus.task02.InsertBatchPer1000
+    - Start 1_000_000 record, Batch per 1000 record
+01:32:47.486 [main] INFO  idv.angus.task02.InsertBatchPer1000
+    - Time Elapsed for 1_000_000 record, Batch per 1000 record: 175805mills
 ```
