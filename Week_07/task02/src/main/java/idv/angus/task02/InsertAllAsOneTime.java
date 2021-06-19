@@ -15,6 +15,7 @@ public class InsertAllAsOneTime {
     private static final StopWatch watch = new StopWatch();
 
     public static void main(String[] args) throws SQLException {
+        log.info("Start 1_000_000 as one time");
         watch.start();
         insert();
         watch.stop();
