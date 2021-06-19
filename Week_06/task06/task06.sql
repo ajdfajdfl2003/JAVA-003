@@ -23,8 +23,7 @@ create table JAVA003.SHOPPINGCART
     PAYMENT bigint not null,
     constraint SHOPPINGCART_ID_uindex
         unique (ID)
-)
-    comment '購物車';
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 comment '購物車';
 
 alter table JAVA003.SHOPPINGCART
     add primary key (ID);
@@ -38,11 +37,10 @@ create table JAVA003.`ORDER`
     DETAIL_ID bigint not null,
     PAYMENT bigint not null,
     STATUS varchar(10) not null,
-    ORDER_TIME mediumtext not null,
+    ORDER_TIME bigint not null,
     constraint ORDER_ID_uindex
         unique (ID)
-)
-    comment '訂單清單';
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 comment '訂單清單';
 
 alter table JAVA003.`ORDER`
     add primary key (ID);
@@ -58,7 +56,7 @@ create table JAVA003.ORDER_DETAIL
     PAYMENT bigint not null,
     constraint ORDER_DETAIL_ID_uindex
         unique (ID)
-);
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 comment '訂單詳細資料';
 
 alter table JAVA003.ORDER_DETAIL
     add primary key (ID);
@@ -75,8 +73,7 @@ create table JAVA003.PRODUCT
     STOCK int not null,
     constraint PRODUCT_ID_uindex
         unique (ID)
-)
-    comment '商品表';
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 comment '商品表';
 
 alter table JAVA003.PRODUCT
     add primary key (ID);
