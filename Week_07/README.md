@@ -21,8 +21,14 @@
 8.（选做）配置一遍异步复制，半同步复制、组复制
 
 9.**（必做）读写分离 - 动态切换数据源版本 1.0**
+  - Base on AbstractRoutingDataSource, support multi datasource on Spring
+
+  - Answer: [task 9 solution]()
 
 10.**（必做）读写分离 - 数据库框架版本 2.0**
+  - Base on ShardingSphere-JDBC
+    
+  - Answer: [task 10 solution]()
 
 11.（选做）读写分离 - 数据库中间件版本 3.0
 
