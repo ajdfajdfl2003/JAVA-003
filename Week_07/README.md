@@ -6,7 +6,7 @@
 2.**（必做）按自己设计的表结构，插入 100 万订单模拟数据，测试不同方式的插入效率**
   - 嘗試著把插入效率降低到十秒以內
     
-  - Answer: [task 2 solution]()
+  - Answer: [task 2 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_07/task02)
 
 3.（选做）按自己设计的表结构，插入 1000 万订单模拟数据，测试不同方式的插入效率
 
@@ -23,12 +23,12 @@
 9.**（必做）读写分离 - 动态切换数据源版本 1.0**
   - Base on AbstractRoutingDataSource, support multi datasource on Spring
 
-  - Answer: [task 9 solution]()
+  - Answer: [task 9 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_07/task09)
 
 10.**（必做）读写分离 - 数据库框架版本 2.0**
   - Base on ShardingSphere-JDBC
     
-  - Answer: [task 10 solution]()
+  - Answer: [task 10 solution](https://github.com/ajdfajdfl2003/JAVA-003/tree/main/Week_07/task10)
 
 11.（选做）读写分离 - 数据库中间件版本 3.0
 
