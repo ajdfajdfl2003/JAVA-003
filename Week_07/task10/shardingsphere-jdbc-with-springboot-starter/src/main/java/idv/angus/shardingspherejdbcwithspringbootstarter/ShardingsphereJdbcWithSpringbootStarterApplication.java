@@ -21,8 +21,12 @@ public class ShardingsphereJdbcWithSpringbootStarterApplication {
 
     @Bean
     public void doSomething() {
-        log.info("get record from t1 table: " + repo.findAll());
-        repo.add(ThreadLocalRandom.current().nextInt(0, 100));
-        log.info("get record from t1 table: " + repo.findAll());
+        new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
+
+        new Thread(() -> {
+            repo.add(ThreadLocalRandom.current().nextInt(0, 100));
+        }).run();
+
+        new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
     }
 }
