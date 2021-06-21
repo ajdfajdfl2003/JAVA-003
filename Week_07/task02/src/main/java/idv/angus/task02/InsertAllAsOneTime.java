@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 @Log4j2
 public class InsertAllAsOneTime {
-    private static final MyDataSource dataSource = new MyDataSource();
+    private static final MyDataSource dataSource = new MyDataSource(false);
     private static final int times = 1_000_000;
     private static final StopWatch watch = new StopWatch();
 

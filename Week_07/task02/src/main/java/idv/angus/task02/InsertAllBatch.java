@@ -10,11 +10,12 @@ import java.sql.SQLException;
 
 @Log4j2
 public class InsertAllBatch {
-    private static final MyDataSource dataSource = new MyDataSource();
     private static final int times = 1_000_000;
     private static final StopWatch watch = new StopWatch();
+    private static MyDataSource dataSource;
 
     public static void main(String[] args) throws SQLException {
+        dataSource = new MyDataSource(true);
         log.info("Start 1_000_000 record, do insert as batch. After 1_000_000 record, do commit");
         watch.start();
         insert();
@@ -24,7 +25,7 @@ public class InsertAllBatch {
 
     private static void insert() throws SQLException {
         String sql = "INSERT INTO `ORDER` (BUYER_ID, DETAIL_ID, PAYMENT, STATUS, ORDER_TIME)" +
-                "VALUES (?, ?, ?, ?, ?);";
+                "VALUES (?, ?, ?, ?, ?)";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
