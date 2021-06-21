@@ -12,9 +12,9 @@ class MyDataSource {
     private static final String password = "";
     private final HikariDataSource ds;
 
-    public MyDataSource(int poolSize) {
+    public MyDataSource(int poolSize, boolean useRewriteBatched) {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(url);
+        config.setJdbcUrl(url + (useRewriteBatched ? "?rewriteBatchedStatements=true" : ""));
         config.setUsername(user);
         config.setPassword(password);
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
@@ -22,9 +22,9 @@ class MyDataSource {
         ds = new HikariDataSource(config);
     }
 
-    public MyDataSource() {
+    public MyDataSource(boolean useRewriteBatched) {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(url);
+        config.setJdbcUrl(url + (useRewriteBatched ? "?rewriteBatchedStatements=true" : ""));
         config.setUsername(user);
         config.setPassword(password);
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");

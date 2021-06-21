@@ -14,13 +14,14 @@ import java.util.stream.IntStream;
 
 @Log4j2
 public class InsertWithThreadAndPoolSize {
-    private static final int poolSize = 10;
-    private static final MyDataSource dataSource = new MyDataSource(poolSize);
+    private static final int poolSize = 20;
     private static final int times = 1_000_000;
     private static final int perThreadDoRecord = times / poolSize;
     private static final StopWatch watch = new StopWatch();
+    private static MyDataSource dataSource;
 
     public static void main(String[] args) throws InterruptedException {
+        dataSource = new MyDataSource(poolSize, true);
         final CountDownLatch countDownLatch = new CountDownLatch(poolSize);
         final ExecutorService executorService = Executors.newFixedThreadPool(poolSize);
         log.info("Start 1_000_000 record. " + perThreadDoRecord + " record per Thread");
@@ -44,7 +45,7 @@ public class InsertWithThreadAndPoolSize {
 
     private static void insert(int perThreadDoRecord) throws SQLException {
         String sql = "INSERT INTO `ORDER` (BUYER_ID, DETAIL_ID, PAYMENT, STATUS, ORDER_TIME)" +
-                "VALUES (?, ?, ?, ?, ?);";
+                "VALUES (?, ?, ?, ?, ?)";
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
