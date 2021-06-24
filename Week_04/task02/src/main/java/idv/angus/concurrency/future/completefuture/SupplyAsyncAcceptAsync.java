@@ -14,15 +14,19 @@ public class SupplyAsyncAcceptAsync {
     public static void main(String[] args) {
         long start = Instant.now().toEpochMilli();
 
-        CompletableFuture.supplyAsync(SupplyAsyncAcceptAsync::sum)
+        final CompletableFuture<Void> voidCompletableFuture = CompletableFuture.supplyAsync(SupplyAsyncAcceptAsync::sum)
                 .thenAcceptAsync(result -> {
                     System.out.println("Current thread: " + Thread.currentThread().getName());
                     System.out.println("异步计算结果为：" + result);
                     System.out.println("使用时间：" + Instant.now().minusMillis(start).toEpochMilli() + " ms");
-                }).join();
+                });
+
+        System.out.println("asdfasdfasdfasdfs");
+        voidCompletableFuture.join();
     }
 
     private static int sum() {
+        System.out.println("aaaaaaaaa");
         return fibo(36);
     }
 

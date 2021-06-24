@@ -24,7 +24,7 @@ public class FibonacciFutureTaskWithPool {
         // This time, we using thread pool
         final ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(future);
-
+        System.out.println("asdfasdfasdfasdfs");
         try {
             System.out.println("异步计算结果为：" + future.get());
             System.out.println("使用时间：" + Instant.now().minusMillis(start).toEpochMilli() + " ms");
