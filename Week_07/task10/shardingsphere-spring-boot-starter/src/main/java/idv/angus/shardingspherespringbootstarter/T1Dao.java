@@ -1,4 +1,4 @@
-package idv.angus.shardingspherespringbootstartermaybe;
+package idv.angus.shardingspherespringbootstarter;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

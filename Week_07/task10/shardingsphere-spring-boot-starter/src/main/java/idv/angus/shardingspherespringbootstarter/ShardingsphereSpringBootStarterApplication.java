@@ -1,4 +1,4 @@
-package idv.angus.shardingspherejdbcwithspringbootstarter;
+package idv.angus.shardingspherespringbootstarter;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +10,25 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
 @Log4j2
-public class ShardingsphereJdbcWithSpringbootStarterApplication {
-
+public class ShardingsphereSpringBootStarterApplication {
     @Autowired
     private T1Repo repo;
 
     public static void main(String[] args) {
-        SpringApplication.run(ShardingsphereJdbcWithSpringbootStarterApplication.class, args);
+        SpringApplication.run(ShardingsphereSpringBootStarterApplication.class, args);
     }
 
     @Bean
-    public void doSomething() {
+    public void doSomeThing() {
         new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
 
         new Thread(() -> {
             repo.add(ThreadLocalRandom.current().nextInt(0, 100));
         }).run();
 
+        new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
+        new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
+        new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
         new Thread(() -> log.info("get record from t1 table: " + repo.findAll())).run();
     }
 }

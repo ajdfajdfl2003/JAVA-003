@@ -27,8 +27,17 @@ spring:
         dataSources:
           group1:
             writeDataSourceName: write-ds0
-            readDataSourceNames: read-ds0, read-ds1
+            readDataSourceNames: read-ds0
+            load-balancer-name: round_robin
+          group2:
+            writeDataSourceName: write-ds0
+            readDataSourceNames: read-ds1
             load-balancer-name: round_robin
         load-balancers:
           round_robin:
             type: ROUND_ROBIN
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

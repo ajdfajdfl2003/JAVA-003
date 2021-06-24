@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>idv.angus</groupId>
-    <artifactId>shardingsphere-spring-raw</artifactId>
+    <artifactId>shardingsphere-spring-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>shardingsphere-spring-boot-starter-maybe</name>
+    <name>shardingsphere-spring-boot-starter</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <spring-version>4.3.30.RELEASE</spring-version>
@@ -21,6 +21,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!--https://kucw.github.io/blog/2020/7/spring-actuator/-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>

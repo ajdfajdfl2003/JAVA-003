@@ -1,4 +1,4 @@
-package idv.angus.shardingspherejdbcwithspringbootstarter;
+package idv.angus.shardingspherespringbootstarter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
