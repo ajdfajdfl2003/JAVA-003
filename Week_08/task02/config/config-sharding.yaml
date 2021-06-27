@@ -1,0 +1,67 @@
+schemaName: sharding_db
+
+dataSourceCommon:
+ username: root
+ password:
+ connectionTimeoutMilliseconds: 30000
+ idleTimeoutMilliseconds: 60000
+ maxLifetimeMilliseconds: 1800000
+ maxPoolSize: 5
+ minPoolSize: 1
+ maintenanceIntervalMilliseconds: 30000
+
+dataSources:
+ ds_0:
+   url: jdbc:mysql://127.0.0.1:33016/JAVA003_ds_0?serverTimezone=UTC&useSSL=false
+ ds_1:
+   url: jdbc:mysql://127.0.0.1:33016/JAVA003_ds_1?serverTimezone=UTC&useSSL=false
+
+rules:
+- !SHARDING
+ tables:
+   ORDER:
+     actualDataNodes: ds_${0..1}.ORDER_${0..3}
+     tableStrategy:
+       standard:
+         shardingColumn: ORDER_ID
+         shardingAlgorithmName: order_inline
+     keyGenerateStrategy:
+       column: ORDER_ID
+       keyGeneratorName: snowflake
+   ORDER_DETAIL:
+     actualDataNodes: ds_${0..1}.ORDER_DETAIL_${0..3}
+     tableStrategy:
+       standard:
+         shardingColumn: O_DETAIL_ID
+         shardingAlgorithmName: order_detail_inline
+     keyGenerateStrategy:
+       column: O_DETAIL_ID
+       keyGeneratorName: snowflake
+ bindingTables:
+   - ORDER,ORDER_DETAIL
+ defaultDatabaseStrategy:
+   standard:
+     shardingColumn: BUYER_ID
+     shardingAlgorithmName: database_inline
+ defaultTableStrategy:
+   none:
+ 
+ shardingAlgorithms:
+   database_inline:
+     type: INLINE
+     props:
+       algorithm-expression: ds_${BUYER_ID % 2}
+   order_inline:
+     type: INLINE
+     props:
+       algorithm-expression: ORDER_${ORDER_ID % 4}
+   order_detail_inline:
+     type: INLINE
+     props:
+       algorithm-expression: ORDER_DETAIL_${order_id % 2}
+ 
+ keyGenerators:
+   snowflake:
+     type: SNOWFLAKE
+     props:
+       worker-id: 123
