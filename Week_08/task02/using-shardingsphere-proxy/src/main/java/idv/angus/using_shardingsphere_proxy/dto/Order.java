@@ -1,5 +1,7 @@
 package idv.angus.using_shardingsphere_proxy.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -7,11 +9,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Getter
 @ToString
+@Builder
+@AllArgsConstructor
 public class Order {
-    private final long buyerId;
-    private final long payment;
-    private final String status;
-    private final long orderTime;
+    private long buyerId;
+    private long payment;
+    private String status;
+    private long orderTime;
     private long oderId;
 
     public Order(long payment, String status, long orderTime) {

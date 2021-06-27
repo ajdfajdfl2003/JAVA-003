@@ -1,8 +1,14 @@
 package idv.angus.using_shardingsphere_proxy.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
+@Builder
+@AllArgsConstructor
 public class OrderDetail {
     private final long orderId;
     private final long productId;
