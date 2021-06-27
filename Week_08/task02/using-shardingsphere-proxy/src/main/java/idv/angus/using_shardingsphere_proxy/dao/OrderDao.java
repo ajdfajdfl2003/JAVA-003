@@ -74,4 +74,22 @@ public class OrderDao {
         }
         return results;
     }
+
+    public void update(long orderId, String status) throws DataAccessException {
+        String sql = "UPDATE `order` SET STATUS=?" +
+                "WHERE order_id=? AND STATUS = 'not check';";
+        try {
+            try (Connection connection = dataSource.getConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                connection.setAutoCommit(true);
+
+                preparedStatement.setString(1, status);
+                preparedStatement.setLong(2, orderId);
+                preparedStatement.execute();
+            }
+        } catch (SQLException e) {
+            log.error(e);
+            throw new DataAccessException(e);
+        }
+    }
 }

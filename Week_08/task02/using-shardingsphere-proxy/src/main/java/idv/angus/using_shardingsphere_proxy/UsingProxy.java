@@ -23,5 +23,9 @@ public class UsingProxy {
 
         log.info(orderDao.query());
         log.info(orderDetailDao.query());
+
+        orderDao.update(orderId, "check");
+
+        log.info(orderDao.query());
     }
 }
