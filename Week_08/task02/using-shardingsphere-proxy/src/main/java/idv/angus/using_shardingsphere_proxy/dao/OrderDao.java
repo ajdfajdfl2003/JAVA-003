@@ -76,8 +76,8 @@ public class OrderDao {
     }
 
     public void update(long orderId, String status) throws DataAccessException {
-        String sql = "UPDATE `order` SET STATUS=?" +
-                "WHERE order_id=? AND STATUS = 'not check';";
+        String sql = "UPDATE `order` SET STATUS = ?" +
+                "WHERE order_id = ? AND STATUS = 'not check';";
         try {
             try (Connection connection = dataSource.getConnection();
                  PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -87,6 +87,18 @@ public class OrderDao {
                 preparedStatement.setLong(2, orderId);
                 preparedStatement.execute();
             }
+        } catch (SQLException e) {
+            log.error(e);
+            throw new DataAccessException(e);
+        }
+    }
+
+    public void delete(long orderId) throws DataAccessException {
+        String sql = "DELETE FROM `order` WHERE order_id = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, orderId);
+            preparedStatement.execute();
         } catch (SQLException e) {
             log.error(e);
             throw new DataAccessException(e);

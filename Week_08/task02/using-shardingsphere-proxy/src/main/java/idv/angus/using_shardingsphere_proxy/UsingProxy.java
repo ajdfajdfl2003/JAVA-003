@@ -21,11 +21,20 @@ public class UsingProxy {
         orderDetailDao.insert(new OrderDetail(orderId, 1234, 2, 500_000));
         orderDetailDao.insert(new OrderDetail(orderId, 1235, 5, 500_000));
 
+        log.info("===after insert===");
         log.info(orderDao.query());
         log.info(orderDetailDao.query());
 
         orderDao.update(orderId, "check");
 
+        log.info("===after update status===");
         log.info(orderDao.query());
+
+        orderDao.delete(orderId);
+        orderDetailDao.delete(orderId);
+
+        log.info("===after delete===");
+        log.info(orderDao.query());
+        log.info(orderDetailDao.query());
     }
 }

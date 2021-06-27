@@ -41,3 +41,6 @@ show create table `order`;
 ## Return Auto Increment ID After Insert
 
 - https://stackoverflow.com/a/1915197/6578107
+
+## 自己耍蠢
+- [寫了一樣的蠢 code](https://zh.codeprj.com/blog/ba51cc1.html)

@@ -63,4 +63,16 @@ public class OrderDetailDao {
             throw new DataAccessException(e);
         }
     }
+
+    public void delete(long orderId) throws DataAccessException {
+        String sql = "DELETE FROM `order_detail` WHERE order_id = ?";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setLong(1, orderId);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            log.error(e);
+            throw new DataAccessException(e);
+        }
+    }
 }
