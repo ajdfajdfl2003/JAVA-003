@@ -6,7 +6,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-class MyDataSource {
+public class MyDataSource {
     private static final String url = "jdbc:mysql://localhost:3307/sharding_db";
     private static final String user = "root";
     private static final String password = "root";
