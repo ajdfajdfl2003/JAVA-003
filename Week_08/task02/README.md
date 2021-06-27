@@ -37,3 +37,7 @@ mysql -h127.0.0.1 -uroot -proot -P3307 -A
 ## 觀察資料表結構
 show create table `order`;
 ```
+
+## Return Auto Increment ID After Insert
+
+- https://stackoverflow.com/a/1915197/6578107
