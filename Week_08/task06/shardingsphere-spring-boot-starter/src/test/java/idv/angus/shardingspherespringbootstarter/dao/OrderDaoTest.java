@@ -4,13 +4,13 @@ package idv.angus.shardingspherespringbootstarter.dao;
 import idv.angus.shardingspherespringbootstarter.TransactionConfiguration;
 import idv.angus.shardingspherespringbootstarter.dto.Order;
 import lombok.extern.log4j.Log4j2;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.Instant;
@@ -25,13 +25,15 @@ public class OrderDaoTest {
     @Autowired
     private OrderDao dao;
 
-    @Test
-    public void insert() {
-        dao.insert(new Order(1_000_000L, "not check", Instant.now().toEpochMilli()));
+    @After
+    public void tearDown() {
+        dao.clearDB();
     }
 
     @Test
-    public void query() {
-        log.info(dao.query());
+    public void insert() {
+        log.info("Before insert: {}", dao.query());
+        dao.insert(new Order(1_000_000L, "not check", Instant.now().toEpochMilli()));
+        log.info("After insert: {}", dao.query());
     }
 }

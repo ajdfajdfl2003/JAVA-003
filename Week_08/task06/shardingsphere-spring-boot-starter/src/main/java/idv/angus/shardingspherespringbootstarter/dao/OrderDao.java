@@ -21,6 +21,10 @@ public class OrderDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public void insertWillFailed(){
+
+    }
+
     @Transactional
     @ShardingTransactionType(TransactionType.XA)
     public void insert(Order order) {
@@ -45,5 +49,9 @@ public class OrderDao {
                 .status(rs.getString("STATUS"))
                 .orderTime(rs.getLong("ORDER_TIME"))
                 .build());
+    }
+
+    public void clearDB() {
+        jdbcTemplate.execute("DELETE FROM `order`");
     }
 }
