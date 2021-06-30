@@ -16,7 +16,7 @@ public class Order {
     private long payment;
     private String status;
     private long orderTime;
-    private long oderId;
+    private long orderId;
 
     public Order(long payment, String status, long orderTime) {
         this.buyerId = ThreadLocalRandom.current().nextLong(1_000_000);
