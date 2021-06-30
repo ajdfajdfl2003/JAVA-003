@@ -1,0 +1,48 @@
+spring:
+  shardingsphere:
+    props:
+      sql-show: true
+    datasource:
+      names: ds0,ds1
+      ds0:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://localhost:33016/ds0
+        username: root
+        password: ''
+      ds1:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbc-url: jdbc:mysql://localhost:33016/ds1
+        username: root
+        password: ''
+    rules:
+      sharding:
+        default-database-strategy:
+          standard:
+            sharding-column: buyer_id
+            sharding-algorithm-name: database_inline
+        sharding-algorithms:
+          database_inline:
+            type: INLINE
+            props:
+              algorithm-expression: ds$->{buyer_id % 2}
+          order_inline:
+            type: INLINE
+            props:
+              algorithm-expression: ORDER-$->{order_id % 4}
+        tables:
+          order:
+            actual-data-nodes: ds$->{0..1}.ORDER-$->{0..3}
+            table-strategy:
+              standard:
+                sharding-column: order_id
+                sharding-algorithm-name: order_inline
+            key-generate-strategy:
+              column: order_id
+              key-generator-name: snowflake
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
+            props:
+              worker-id: 123
