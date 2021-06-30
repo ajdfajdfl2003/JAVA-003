@@ -40,11 +40,12 @@ public class OrderDaoTest {
         try {
             log.info("Before insert: {}", dao.query());
             dao.duplicatedInsert(new Order(1_000_000L, "not check", Instant.now().toEpochMilli()));
-            log.info("After insert: {}", dao.query());
             fail("should error!!!");
         } catch (Exception e) {
             log.error(e);
             assertEquals(0, dao.query().size());
+        } finally {
+            log.info("After insert: {}", dao.query());
         }
     }
 

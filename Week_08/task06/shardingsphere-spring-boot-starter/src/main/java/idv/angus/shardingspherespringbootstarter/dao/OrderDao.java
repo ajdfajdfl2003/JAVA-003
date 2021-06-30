@@ -10,8 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -44,18 +42,6 @@ public class OrderDao {
             ps.setString(4, order.getStatus());
             ps.setLong(5, order.getOrderTime());
         });
-//        jdbcTemplate.update(sql, ps -> doInsertPrimaryKey(order, ps));
-    }
-
-    private void doInsertPrimaryKey(Order order, PreparedStatement ps) throws SQLException {
-        for (int i = 1; i < 3; i++) {
-            ps.setLong(1, i);
-            ps.setLong(2, order.getBuyerId());
-            ps.setLong(3, order.getPayment());
-            ps.setString(4, order.getStatus());
-            ps.setLong(5, order.getOrderTime());
-            ps.executeUpdate();
-        }
     }
 
     @Transactional
