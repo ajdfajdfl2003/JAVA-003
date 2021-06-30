@@ -36,6 +36,13 @@ public class OrderDao {
             ps.setLong(5, order.getOrderTime());
         });
         jdbcTemplate.update(sql, ps -> {
+            ps.setLong(1, 2);
+            ps.setLong(2, order.getBuyerId());
+            ps.setLong(3, order.getPayment());
+            ps.setString(4, order.getStatus());
+            ps.setLong(5, order.getOrderTime());
+        });
+        jdbcTemplate.update(sql, ps -> {
             ps.setLong(1, 1);
             ps.setLong(2, order.getBuyerId());
             ps.setLong(3, order.getPayment());
