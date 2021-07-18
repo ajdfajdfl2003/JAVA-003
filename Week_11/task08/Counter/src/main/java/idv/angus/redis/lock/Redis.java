@@ -10,6 +10,7 @@ public class Redis {
 
     static {
         config = new Config();
+        config.setThreads(20);
         config.useSingleServer().setAddress("redis://127.0.0.1:6379");
         client = Redisson.create(config);
     }
