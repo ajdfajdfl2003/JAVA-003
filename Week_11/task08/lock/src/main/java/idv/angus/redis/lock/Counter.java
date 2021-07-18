@@ -1,11 +1,15 @@
 package idv.angus.redis.lock;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Counter {
     private final RedisLocker lock;
+    private final CountDownLatch countDownLatch;
     private int sum = 0;
 
-    public Counter(RedisLocker lock) {
+    public Counter(RedisLocker lock, CountDownLatch countDownLatch) {
         this.lock = lock;
+        this.countDownLatch = countDownLatch;
     }
 
     public int getSum() {
@@ -23,6 +27,7 @@ public class Counter {
             if (!lock.unlock()) {
                 System.out.println("unlock failed !!!");
             }
+            countDownLatch.countDown();
         }
     }
 }

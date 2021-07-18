@@ -17,11 +17,11 @@ public class RedisLocker {
     static {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         // 最大空閑連接數量，預設 8 個
-        jedisPoolConfig.setMaxIdle(12);
+        jedisPoolConfig.setMaxIdle(500);
         // 最大連接數，預設 8 個
-        jedisPoolConfig.setMaxTotal(16);
+        jedisPoolConfig.setMaxTotal(1000);
         // 最小空閑連接數量，預設 0 個
-        jedisPoolConfig.setMinIdle(4);
+        jedisPoolConfig.setMinIdle(500);
         // 获取连接时的最大等待毫秒数(如果设置为阻塞时BlockWhenExhausted),如果超时就抛异常, 小于零:阻塞不确定的时间,  默认-1
         jedisPoolConfig.setMaxWaitMillis(2000); // 设置2秒
         // 对拿到的connection进行validateObject校验
